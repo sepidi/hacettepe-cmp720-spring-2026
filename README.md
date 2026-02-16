@@ -40,7 +40,7 @@ This structure ensures that students gain both **practical engineering skills** 
 The repository will be organized as follows:
 
 ```text
-CMP720-Embedded-System-Design/
+hacettepe-cmp720-spring-2026/
 │
 ├── labs/
 │   ├── lab01/
