@@ -42,6 +42,8 @@ The repository will be organized as follows:
 ```text
 hacettepe-cmp720-spring-2026/
 │
+├── lecture_notes/
+│
 ├── labs/
 │   ├── lab01/
 │   ├── lab02/
