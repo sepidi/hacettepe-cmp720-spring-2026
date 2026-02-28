@@ -1,0 +1,20 @@
+# SafePulse Lab 2 - Renode Script
+# Run with: renode safepulse.resc
+
+using sysbus
+
+# Create and configure the machine
+mach create "SafePulse"
+machine LoadPlatformDescription @stm32f4.repl
+
+# Load the compiled firmware binary
+sysbus LoadELF @build/safepulse.elf
+
+# Open UART analyzer to see serial output
+showAnalyzer uart1
+
+# Set log level for debugging
+logLevel -1 uart1
+
+# Start the simulation
+start
