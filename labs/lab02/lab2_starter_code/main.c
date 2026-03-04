@@ -90,8 +90,8 @@ void uart_put_int(int val) {
  *      USART, and TE (bit 3) enables the transmitter.
  *      To set multiple bits in one write, combine masks with
  *      the bitwise OR operator (|). For example:
- *        USART_CR1_UE = (1 << 13) = 0x2000
- *        USART_CR1_TE = (1 << 3)  = 0x0008
+ *        USART_CR1_UE = (1 << 13) = 0x2000 # alredy done in definitions
+ *        USART_CR1_TE = (1 << 3)  = 0x0008 # alredy done in definitions
  *        USART_CR1_UE | USART_CR1_TE = 0x2008
  *      Write the combined value to USART1_CR1.
  *      Note: Use direct assignment (=) rather than |= so CR1
