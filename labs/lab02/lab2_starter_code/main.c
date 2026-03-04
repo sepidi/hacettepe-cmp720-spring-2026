@@ -84,6 +84,7 @@ void uart_put_int(int val) {
  *      For a peripheral clock of 84 MHz and 115200 baud:
  *        BRR = 84,000,000 / 115,200 = 729 = 0x2D9
  *      (See RM0090 Section 30.3.4 for the BRR formula.)
+ *      Assume default oversampling by 16 (OVER8 = 0)
  *
  *   c) Enable the USART and its transmitter by writing to CR1.
  *      You need two bits set: UE (bit 13) enables the whole
