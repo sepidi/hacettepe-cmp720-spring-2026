@@ -1,0 +1,25 @@
+# SafePulse Lab 3 - Renode Script
+# Sensor Interfacing via I2C, Drivers & Hard Timing
+# Run with: renode safepulse.resc
+
+using sysbus
+
+# Create and configure the machine
+mach create "SafePulse"
+machine LoadPlatformDescription @stm32f4.repl
+
+# Load the compiled firmware binary
+sysbus LoadELF @build/safepulse.elf
+
+# Attach vital signs sensor logic to the I2C slave
+include @vitals_sensor.py
+
+# Open UART analyzer to see serial output
+showAnalyzer uart1
+
+# Set log level for debugging
+logLevel -1 uart1
+logLevel -1 timer2
+
+# Start the simulation
+start
