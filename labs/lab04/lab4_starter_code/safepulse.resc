@@ -1,0 +1,22 @@
+# SafePulse Lab 4 - Renode Script (Zephyr RTOS)
+# Run with: renode safepulse.resc
+
+using sysbus
+
+mach create "SafePulse"
+machine LoadPlatformDescription @platforms/boards/stm32f4_discovery.repl
+
+# Add vital signs sensor as I2C slave on I2C1
+machine LoadPlatformDescriptionFromString "vitalsSensor: Mocks.DummyI2CSlave @ i2c1 0x55"
+sysbus.cpu PerformanceInMips 168
+
+# Load Zephyr firmware
+sysbus LoadELF @build/zephyr/zephyr.elf
+
+# Attach sensor logic via Python hooks
+include @vitals_sensor.py
+
+showAnalyzer sysbus.usart2
+logLevel -1 sysbus.usart2
+
+start
