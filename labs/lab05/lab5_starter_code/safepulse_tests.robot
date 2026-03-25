@@ -46,6 +46,16 @@ Enable Scenario
     Execute Command             python "sensor_state['scenario_active'] = True"
     Execute Command             python "sensor_state['scenario_tick'] = 0"
 
+Check Alarm Pin
+    [Documentation]    Read GPIOD_ODR bit 14 (PD14 red LED = alarm output).
+    ...                0 = OFF (no alarm), 1 = ON (alarm active)
+    [Arguments]        ${expected}
+    ${odr}=    Execute Command    sysbus ReadDoubleWord 0x40020C14
+    ${odr}=    Strip String    ${odr}
+    ${bit}=    Evaluate    (int('${odr}', 0) >> 14) & 1
+    Should Be Equal As Integers    ${bit}    ${expected}
+    ...    Alarm GPIO PD14: expected=${expected} but got=${bit} (ODR=${odr})
+
 
 *** Test Cases ***
 
