@@ -1,0 +1,71 @@
+# Application Mapping Problem - Infeasible Instance
+# ==================================================
+# This data file creates an INFEASIBLE problem to demonstrate
+# what happens when constraints cannot be satisfied simultaneously.
+#
+# The infeasibility is caused by:
+# 1. Very tight memory constraints (reduced capacities)
+# 2. Very strict deadlines that cannot be met on any core
+#
+# Students should use this to learn about:
+# - Model infeasibility
+# - Constraint relaxation
+# - IIS (Irreducible Inconsistent Subset) analysis
+
+# Number of applications
+NUM_APPLICATIONS 4
+
+# Number of cores
+NUM_CORES 3
+
+# Application names (in order)
+APPLICATION_NAMES
+App1_ImageProcessing
+App2_SensorFusion
+App3_Control
+App4_Communication
+
+# Core names (in order)
+CORE_NAMES
+Core1_ARM_CortexA72
+Core2_ARM_CortexM7
+Core3_GPU
+
+# Energy consumption matrix (rows: applications, columns: cores) in millijoules (mJ)
+ENERGY_MATRIX
+150.0  300.0  80.0
+100.0  80.0   200.0
+120.0  70.0   250.0
+90.0   60.0   180.0
+
+# Execution time matrix (rows: applications, columns: cores) in milliseconds (ms)
+TIME_MATRIX
+80.0   150.0  40.0
+45.0   30.0   90.0
+15.0   10.0   50.0
+60.0   40.0   80.0
+
+# Memory requirements for each application (in MB)
+MEMORY_REQUIREMENTS
+512.0
+256.0
+128.0
+256.0
+
+# Memory capacity for each core (in MB) - REDUCED to cause infeasibility
+# Core1 can only fit App2 or App4
+# Core2 can only fit App3
+# Core3 can only fit App1 OR (App2+App3) OR (App3+App4)
+# This makes it impossible to fit all 4 applications!
+MEMORY_CAPACITY
+300.0
+150.0
+600.0
+
+# Deadlines for each application (in ms) - Some are very tight
+# App3 deadline of 5ms is impossible to meet (fastest execution is 10ms on Core2)
+DEADLINES
+100.0
+50.0
+5.0
+80.0

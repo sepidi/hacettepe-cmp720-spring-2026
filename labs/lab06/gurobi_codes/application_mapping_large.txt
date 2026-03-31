@@ -1,0 +1,80 @@
+# Application Mapping Problem - Larger Instance
+# ================================================
+# This is a larger problem instance for more advanced students
+# 8 applications, 4 cores - more realistic embedded system
+
+# Number of applications
+NUM_APPLICATIONS 8
+
+# Number of cores
+NUM_CORES 4
+
+# Application names (in order)
+APPLICATION_NAMES
+App1_ImageProcessing
+App2_SensorFusion
+App3_MotorControl
+App4_Communication
+App5_ObjectDetection
+App6_PathPlanning
+App7_DataLogging
+App8_UserInterface
+
+# Core names (in order)
+CORE_NAMES
+Core1_ARM_CortexA72
+Core2_ARM_CortexM7
+Core3_GPU
+Core4_DSP
+
+# Energy consumption matrix (mJ) - [8 applications x 4 cores]
+# Each application has different energy profiles on different cores
+ENERGY_MATRIX
+150.0  300.0  80.0   200.0
+100.0  80.0   200.0  120.0
+120.0  70.0   250.0  180.0
+90.0   60.0   180.0  100.0
+200.0  350.0  70.0   220.0
+180.0  200.0  150.0  90.0
+80.0   70.0   120.0  85.0
+110.0  90.0   140.0  130.0
+
+# Execution time matrix (ms) - [8 applications x 4 cores]
+TIME_MATRIX
+80.0   150.0  40.0   70.0
+45.0   30.0   90.0   55.0
+15.0   10.0   50.0   25.0
+60.0   40.0   80.0   50.0
+100.0  180.0  35.0   85.0
+90.0   110.0  75.0   45.0
+40.0   35.0   65.0   42.0
+55.0   50.0   70.0   60.0
+
+# Memory requirements for each application (MB)
+MEMORY_REQUIREMENTS
+512.0
+256.0
+128.0
+256.0
+768.0
+512.0
+192.0
+384.0
+
+# Memory capacity for each core (MB)
+MEMORY_CAPACITY
+1536.0
+768.0
+1024.0
+1280.0
+
+# Deadlines for each application (ms)
+DEADLINES
+100.0
+50.0
+20.0
+80.0
+120.0
+110.0
+60.0
+90.0

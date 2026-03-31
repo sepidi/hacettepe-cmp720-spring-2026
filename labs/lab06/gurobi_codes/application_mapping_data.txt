@@ -1,0 +1,57 @@
+# Application Mapping Problem - Sample Data File
+# This file contains all input data for the embedded system application mapping problem
+
+# Number of applications
+NUM_APPLICATIONS 4
+
+# Number of cores
+NUM_CORES 3
+
+# Application names (in order)
+APPLICATION_NAMES
+App1_ImageProcessing
+App2_SensorFusion
+App3_Control
+App4_Communication
+
+# Core names (in order)
+CORE_NAMES
+Core1_ARM_CortexA72
+Core2_ARM_CortexM7
+Core3_GPU
+
+# Energy consumption matrix (rows: applications, columns: cores) in millijoules (mJ)
+# Each row represents one application's energy consumption on each core
+ENERGY_MATRIX
+150.0  300.0  80.0
+100.0  80.0   200.0
+120.0  70.0   250.0
+90.0   60.0   180.0
+
+# Execution time matrix (rows: applications, columns: cores) in milliseconds (ms)
+# Each row represents one application's execution time on each core
+TIME_MATRIX
+80.0   150.0  40.0
+45.0   30.0   90.0
+15.0   10.0   50.0
+60.0   40.0   80.0
+
+# Memory requirements for each application (in MB)
+MEMORY_REQUIREMENTS
+512.0
+256.0
+128.0
+256.0
+
+# Memory capacity for each core (in MB)
+MEMORY_CAPACITY
+1024.0
+512.0
+768.0
+
+# Deadlines for each application (in ms)
+DEADLINES
+100.0
+50.0
+20.0
+80.0
